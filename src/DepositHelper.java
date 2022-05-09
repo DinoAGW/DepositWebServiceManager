@@ -202,13 +202,13 @@ public class DepositHelper {
 		while (true) {
 			try {
 				//TODO: es muss noch dafür gesorgt werden, dass es abbricht, wenn es nicht returned
+				Thread.sleep(1000);
 				status = new SipWebServices_Service(new URL(SIP_STATUS_WSDL_URL),
 						new QName("http://dps.exlibris.com/", "SipWebServices")).getSipWebServicesPort()
 								.getSIPStatusInfo(sipId, false);
 				break;
 			} catch (Exception e) {
 				System.err.println("Statusabfrage fehlgeschlagen");
-				Thread.sleep(1000);
 			}
 		}
 		RosettaSipStatusInfo rosettaStatus = new RosettaSipStatusInfo(status);
